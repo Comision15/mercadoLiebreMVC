@@ -151,5 +151,14 @@
       "discount": 0,
       "image": "default-image.png",
       "category": "visited"
+   },
+   {
+      "id": 18,
+      "name": "Aspiradora Katcher",
+      "description": "La línea de aspiradoras para polvo y agua incluyen máquinas de alto rendimiento desde 12 a 100 litros de capacidad de tanque de acero inoxidable. Nuestra línea funciona tanto en húmedo como en seco. Compactas y flexibles, son muy fáciles de trasladar. Filtro lavable incluido.",
+      "price": 120000,
+      "discount": 10,
+      "image": "product-1660683352737.png",
+      "category": "in-sale"
    }
 ]
