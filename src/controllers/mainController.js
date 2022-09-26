@@ -28,7 +28,8 @@ const controller = {
 				include: [
 					{
 						association : 'products',
-						include : ['images']
+						include : ['images'],
+						limit : 4
 					}
 				]
 			})
