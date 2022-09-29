@@ -69,54 +69,57 @@ const controller = {
 				return res.redirect('/products')
 			})
 			.catch(error => console(error))
-
 	},
 
 	// Update - Form to edit
 	edit: (req, res) => {
 		// Do the magic
-		const products = loadProducts();
-		const product = products.find(product => product.id === +req.params.id);
-		return res.render('product-edit-form',{
-			product
-		})
+		let categories = db.Category.findAll({
+			attributes : ['id','name'],
+			order : ['name']
+		});
+		let product = db.Product.findByPk(req.params.id);
+
+		Promise.all([categories,product])
+			.then(([categories,product]) => {
+				return res.render('product-edit-form',{
+					product,
+					categories
+				})
+			})
+			.catch(error => console.log(error));
 	},
 	// Update - Method to update
 	update: (req, res) => {
 		// Do the magic
-		const products = loadProducts();
-		const {name,price,discount, category, description} = req.body;
-
-		const productsModify = products.map(product => {
-			if(product.id === +req.params.id){
-				return {
-					...product,
-					name : name.trim(),
-					price : +price,
-					discount : +discount,
-					description : description.trim(),
-					category
+		db.Product.update(
+			{
+				...req.body,
+				name : req.body.name.trim(),
+				description : req.body.description.trim()
+			},
+			{
+				where : {
+					id : req.params.id
 				}
 			}
-			return product
-		})
-		
-		storeProducts(productsModify);
-
-		return res.redirect('/products/detail/' + req.params.id)
+		)
+			.then( () => res.redirect('/products/detail/' + req.params.id) )
+			.catch(error => console.log(error))
+		 
 	},
 
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
 		// Do the magic
-		const {id} = req.params;
-		const products = loadProducts();
-
-		const productsModify = products.filter(product => product.id !== +id);
-
-		storeProducts(productsModify);
-		return res.redirect('/products');
-
+	
+		db.Product.destroy({
+			where : {
+				id : req.params.id
+			}
+		})
+			.then( () => res.redirect('/products'))
+			.catch( error => console.log(error));
 	}
 };
 
