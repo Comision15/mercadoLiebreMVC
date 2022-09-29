@@ -16,7 +16,7 @@ router.get('/', productsController.index);
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create', productsController.create); 
-router.post('/store',uploadImageProduct.single('image'), productsController.store); 
+router.post('/store',uploadImageProduct.array('images'), productsController.store); 
 
 
 /*** GET ONE PRODUCT ***/ 

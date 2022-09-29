@@ -34,31 +34,41 @@ const controller = {
 	// Create - Form to create
 	create: (req, res) => {
 		// Do the magic
-		return res.render('product-create-form')
+		db.Category.findAll({
+			attributes : ['id','name'],
+			order : ['name']
+		})
+			.then(categories => {
+				return res.render('product-create-form', {
+					categories
+				})
+			})
+			.catch(error => console.log(error))
 	},
 	
 	// Create -  Method to store
 	store: (req, res) => {
 		// Do the magic
-
-		const {name, price,discount,description, category} = req.body
-		const products = loadProducts();
-
-		const newProduct = {
-			id : (products[products.length - 1].id + 1),
-			name : name.trim(),
-			description : description.trim(),
-			price : +price,
-			discount : +discount,
-			image : req.file ? req.file.filename : 'default-image.png',
-			category
-		}
-
-		const productsModify = [...products, newProduct];
-
-		storeProducts(productsModify);
-
-		return res.redirect('/products');
+		db.Product.create({
+			...req.body,
+			name : req.body.name.trim(),
+			description : req.body.description.trim()
+		})
+			.then(product => {
+				if(req.files.length){
+					let images = req.files.map(({filename}) => {
+						return {
+							file : filename,
+							productId: product.id
+						}
+					})
+					db.Image.bulkCreate(images,{
+						validate : true
+					}).then( (result) => console.log(result) )
+				}
+				return res.redirect('/products')
+			})
+			.catch(error => console(error))
 
 	},
 

@@ -30,10 +30,11 @@
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="category" class="form-label">Categoría:</label>
-						<select name="category" id="category" class="form-input">
-							<option value="">Elegí</option>
-							<option value="in-sale">En oferta</option>
-							<option value="visited">Últimos agregados</option>
+						<select name="categoryId" id="category" class="form-input">
+							<option value="" hidden selected>Elegí la categoría</option>
+							<% categories.forEach(({id,name}) => { %>
+							 <option value="<%= id %>"><%= name %></option>
+							<% }) %>
 						</select>
 					</div>
 					<div class="col-12">
@@ -42,7 +43,7 @@
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="image" class="buy-now-button">Agregar imagen</label>
-						<input type="file" hidden name="image" id="image">
+						<input type="file" hidden name="images" id="image" multiple>
 					</div>
 					<div class="col-12 col-md-6">
 						<button type="submit" class="buy-now-button">Guardar producto</button>
