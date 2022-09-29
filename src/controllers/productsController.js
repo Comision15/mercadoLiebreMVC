@@ -1,3 +1,5 @@
+const db = require('../database/models');
+
 const {loadProducts,storeProducts} = require('../data/productsModule');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -6,22 +8,27 @@ const controller = {
 	// Root - Show all products
 	index: (req, res) => {
 		// Do the magic
-		const products = loadProducts();
-		return res.render('products', {
-			products,
-			toThousand
+	
+		db.Product.findAll({
+			include : ['images']
 		})
+			.then(products => res.render('products', {
+				products,
+				toThousand
+			}))
 	},
 
 	// Detail - Detail from one product
 	detail: (req, res) => {
 		// Do the magic
-		const products = loadProducts();
-		const product = products.find(product => product.id === +req.params.id);
-		return res.render('detail',{
-			product,
-			toThousand
+		db.Product.findByPk(req.params.id,{
+			include : ['images']
 		})
+			.then(product => res. render('detail', {
+				product,
+				toThousand
+			}))
+			.catch(error => console.log(error))
 	},
 
 	// Create - Form to create
