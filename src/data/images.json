@@ -1,50 +1,50 @@
 [
     {
-       "image": "img-cafetera-moulinex.jpg"
+       "images": ["img-cafetera-moulinex.jpg","img-cafetera-moulinex.jpg"]
     },
     {
-       "image": "img-macbook-pro-2019.jpg"
+       "images": ["img-macbook-pro-2019.jpg","img-macbook-pro-2019.jpg"]
     },
     {
-       "image": "img-samsung-galaxy-s10.jpg"
+       "images": ["img-samsung-galaxy-s10.jpg","img-samsung-galaxy-s10.jpg"]
     },
     {
-       "image": "img-heladera-whirpool.jpg"
+       "images": ["img-heladera-whirpool.jpg"]
     },
     {
-       "image": "img-camara-nikon.jpg"
+       "images": ["img-camara-nikon.jpg"]
     },
     {
-       "image": "img-aire-acondicionado.jpg"
+       "images": ["img-aire-acondicionado.jpg"]
     },
     {
-       "image": "img-laptop-lenovo.jpg"
+       "images": ["img-laptop-lenovo.jpg"]
     },
     {
-       "image": "img-iphone-11.jpg"
+       "images": ["img-iphone-11.jpg"]
     },
     {
-       "image": "img-apple-magic-keyboard.jpg"
+       "images": ["img-apple-magic-keyboard.jpg"]
     },
     {
-       "image": "img-mouse-logitech.jpg"
+       "images": ["img-mouse-logitech.jpg"]
     },
     {
-       "image": "img-parlante-bose.jpg"
+       "images": ["img-parlante-bose.jpg"]
     },
     {
-       "image": "img-home-theater-sony.jpg"
+       "images": ["img-home-theater-sony.jpg"]
     },
     {
-       "image": "img-tv-samsung-smart.jpg"
+       "images": ["img-tv-samsung-smart.jpg"]
     },
     {
-       "image": "img-sony-blueray.jpg"
+       "images": ["img-sony-blueray.jpg"]
     },
     {
-       "image": "img-bicicleta-fierce.jpg"
+       "images": ["img-bicicleta-fierce.jpg"]
     },
     {
-       "image": "img-parlante-sony.jpg"
+       "images": ["img-parlante-sony.jpg"]
     }
  ]
