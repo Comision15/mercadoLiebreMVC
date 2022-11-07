@@ -21,7 +21,26 @@ const validField = (element, {target}) => {
   $(element).innerHTML = null;
   target.classList.remove('is-invalid')
   target.classList.add('is-valid');
+};
+
+const checkFields = () => {
+  let error = false;
+  for (let i = 0; i < elements.length - 1; i++) {
+    
+    if(!elements[i].value || elements[i].classList.contains('is-invalid')) {
+      error = true
+    }
+    console.log(error)
+  }
+
+  if(!error){
+    $('btn-submit').disabled = false;
+  }else {
+    $('btn-submit').disabled = true;
+  }
 }
+
+
 
 $("name").addEventListener("focus", function (e) {
   cleanError("nameMsg", e)
@@ -39,6 +58,9 @@ $("name").addEventListener("blur", function (e) {
       validField("nameMsg", e)
       break;
   }
+
+  checkFields()
+
  
 });
 
@@ -55,9 +77,12 @@ $("price").addEventListener("blur", function (e) {
       msgError("priceMsg", "No puede ser un número negativo", e)
       break;
     default:
+      
       validField("priceMsg", e)
       break;
   }
+  checkFields()
+
 });
 
 $("price").addEventListener("keyup", function (e) {
@@ -85,6 +110,9 @@ $('category').addEventListener('blur', function(e) {
       validField("categoryMsg", e)
       break;
   }
+
+  checkFields()
+
 
 })
 
@@ -114,6 +142,9 @@ $("description").addEventListener("blur", function (e) {
         validField("descriptionMsg", e)
         break;
     }
+
+    checkFields()
+
 });
 
 $("description").addEventListener("keyup", function (e) {
@@ -139,6 +170,9 @@ $('image1').addEventListener('change', (e) => {
     reader.onload = () => {
       $('image1Prev').src = reader.result
     }
+
+    checkFields()
+
 });
 
 $('image2').addEventListener('change', (e) => {
@@ -149,6 +183,9 @@ $('image2').addEventListener('change', (e) => {
   reader.onload = () => {
     $('image2Prev').src = reader.result
   }
+
+  checkFields()
+
 });
 
 

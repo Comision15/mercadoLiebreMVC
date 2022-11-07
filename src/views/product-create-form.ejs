@@ -17,12 +17,12 @@
 			<form action="/products/store" method="POST" enctype="multipart/form-data" id="formAddProduct">
 				<div class="row product-detail">
 					<div class="col-12 col-md-6">
-						<label for="name" class="form-label">Nombre del producto:</label>
+						<label for="name" class="form-label">Nombre del producto *:</label>
 						<input type="text" id="name" name="name" placeholder="Ej: Zapatillas Reebok" class="form-control form-control-lg py-3 ">
 						<p id="nameMsg"></p>
 					</div>
 					<div class="col-12 col-md-6">
-						<label for="price" class="form-label">Precio del producto:</label>
+						<label for="price" class="form-label">Precio del producto *:</label>
 						<input type="number" id="price" name="price" placeholder="Ej: 5678"class="form-control form-control-lg py-3 ">
 						<p id="priceMsg"></p>
 
@@ -33,10 +33,10 @@
 					</div>
 					<div class="col-12 col-md-3">
 						<label for="finalPrice" class="form-label">Precio Final:</label>
-						<input type="text" id="finalPrice" name="finalPrice" placeholder="Ej: 15" class="form-control form-control-lg py-3 ">
+						<input type="text" id="finalPrice" name="finalPrice" value="0" class="form-control form-control-lg py-3 ">
 					</div>
 					<div class="col-12 col-md-6">
-						<label for="category" class="form-label">Categoría:</label>
+						<label for="category" class="form-label">Categoría *:</label>
 						<select name="categoryId" id="category" class="form-control form-select-lg py-3">
 							<option value="" hidden selected>Elegí la categoría</option>
 							<% categories.forEach(({id,name}) => { %>
@@ -56,14 +56,14 @@
 						</div>
 					</div>
 					<div class="col-12 col-md-6">
-						<label for="description" class="form-label">Descripción:</label>
+						<label for="description" class="form-label">Descripción *:</label>
 						<textarea name="description" id="description" class="form-control form-control-lg py-3" style="resize: none;" rows="5"></textarea>
 						<p id="descriptionInfo" hidden><span id="numberCharacters"></span> disponibles</p>
 						<p id="descriptionMsg"></p>
 
 					</div>
 					<div class="col-12 col-md-3">
-						<label for="image1" class="btn btn-secondary w-100 py-4 fs-3">Imagen principal</label>
+						<label for="image1" class="btn btn-secondary w-100 py-4 fs-3">Imagen principal *</label>
 						<input type="file" hidden name="image1" id="image1">
 					</div>
 					<div class="col-12 col-md-3">
@@ -71,7 +71,7 @@
 						<input type="file" hidden name="image2" id="image2">
 					</div>
 					<div class="col-12 col-md-6">
-						<button type="submit" class="btn btn-primary w-100 py-4 fs-3" disabled>Guardar producto</button>
+						<button type="submit" class="btn btn-primary w-100 py-4 fs-3" id="btn-submit" disabled>Guardar producto</button>
 					</div>
 				</div>
 			</form>

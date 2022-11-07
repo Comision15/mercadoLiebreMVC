@@ -42,8 +42,16 @@
                       </div>
                     <div class="col-12 col-md-6">
                         <label for="pass" class="form-label">Contraseña</label>
-                        <input type="password"
-                        class="form-input form-control <%= locals.errors && errors.pass ? 'is-invalid' : null %>" name="pass" id="pass"/>
+                        <div class="input-group mb-3">
+                          
+                          <input type="password"
+                          class="form-input form-control <%= locals.errors && errors.pass ? 'is-invalid' : null %>" name="pass" id="pass"/>
+                          <div class="input-group-append" style="cursor: pointer;" onclick="viewPass(event)">
+                            <span class="input-group-text py-4" id="viewPass"><i class="fa-solid fa-eye-slash" ></i></span>
+                          </div>
+                        </div>
+
+                     
                         <small id="errorPass" class="text-danger"><%= locals.errors && errors.pass ? errors.pass.msg : null %></small>
                       </div>
 
@@ -95,6 +103,8 @@
     </div>
 
     <%- include('partials/footer') %>
-    <script src="/js/register.js"></script>
+    <%- include('partials/scripts') %>
+
+    <script src="/js/userRegister.js"></script>
   </body>
 </html>
