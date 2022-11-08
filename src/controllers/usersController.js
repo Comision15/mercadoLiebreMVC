@@ -5,13 +5,13 @@ module.exports = {
         return res.render('userRegister')
     },
     processRegister : (req,res) => {
-
+        return res.send(req.body)
     },
     login : (req,res) => {
         return res.render('userLogin')
     },
     processLogin : (req,res) => {
-
+        return res.send(req.body)
     },
     profile : (req,res) => {
 

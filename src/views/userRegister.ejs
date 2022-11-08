@@ -63,26 +63,29 @@
                         <small id="errorPass2" class= "text-danger"><%= locals.errors && errors.pass2 ? errors.pass2.msg : null %></small>
 
                       </div>
-                      <div class="col-12 col-md-6 d-flex justify-content-center">
-                     
-                        <div class="form-check d-flex align-items-center">
-                          <input name="bases" class="form-check-input <%= locals.errors && errors.bases ? 'is-invalid' : null %>" type="checkbox" value="" id="terms" style="width:30px; height:30px;">
-                          <label class="form-check-label ms-2" for="terms">
-                            Acepto las bases y condiciones
-                          </label>
+                      <div class="col-12 col-md-6">
+                        <div class="d-flex justify-content-center">
+                          <div class="form-check d-flex align-items-center">
+                            <input name="bases" class="form-check-input <%= locals.errors && errors.bases ? 'is-invalid' : null %>" type="checkbox" value="" id="terms" style="width:30px; height:30px;">
+                            <label class="form-check-label ms-2" for="terms">
+                              Acepto las bases y condiciones
+                            </label>
+                          
+                          </div>
                         </div>
+                    
 
-                      
+                        <p id="errorTerms" class= "text-danger text-center"><%= locals.errors && errors.bases ? errors.bases.msg : null %></p>
+
+
 
                         </div>
-                       
                         <div class="col-12 col-md-6 mt-4">
 
                           <button type="submit" class="buy-now-button">
                             Registrarse
                           </button>
-                          <p id="errorTerms" class= "text-danger mt-4"><%= locals.errors && errors.bases ? errors.bases.msg : null %></p>
-                          <p id="msgError" class="text-danger"></p>
+                          <span id="msgError" class="text-danger"></span>
 
                          
                         </div>

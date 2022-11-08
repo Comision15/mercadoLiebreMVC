@@ -1,10 +1,8 @@
 console.log('userRegister success!');
 
-const exRegAlfa = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/g
+const exRegAlfa = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/
 const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/
 const exRegPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,12}/
-
-
 
 const msgError = (element, msg, {target}) => {
     $(element).innerText = msg;
@@ -20,16 +18,14 @@ const validField = (element,{target}) => {
     cleanField(element, target)
     target.classList.add('is-valid');
     
-}
+};
 
 const viewPass = function(e) {
-    console.log(e.target)
-   document.querySelector('#viewPass i').classList.toggle('fa-eye')
-   document.querySelector('#viewPass i').classList.toggle('fa-eye-slash')
+    document.querySelector('#viewPass i').classList.toggle('fa-eye')
+    document.querySelector('#viewPass i').classList.toggle('fa-eye-slash')
 
-   $('pass').type = $('pass').type === "text" ? 'password' : 'text'
+   $('pass').type = $('pass').type === "text" ? 'password' : 'text';
 }
-
 
 
 $('name').addEventListener('blur', function(e){
@@ -105,8 +101,65 @@ $('pass').addEventListener('blur', function(e){
             validField('errorPass',e)
             break;
     }
-})
+});
 
 $('pass').addEventListener('focus', function({target}){
     cleanField('errorPass', target)
+});
+
+
+$('pass2').addEventListener('blur', function(e){
+    switch (true) {
+        case !this.value.trim():
+            msgError('errorPass2',"Debes confirmar tu contraseña", e);
+            break;
+        case this.value !== $('pass').value:
+            msgError('errorPass2',"Las contraseñas no coinciden", e);
+            break
+        default:
+            validField('errorPass2',e)
+            break;
+    }
+});
+
+$('pass2').addEventListener('focus', function({target}){
+    cleanField('errorPass2', target)
+});
+
+$('terms').addEventListener('click', (e) => {
+    $('errorTerms').innerText = null
+});
+
+$('form-register').addEventListener('keydown', (e) => {
+    if(e.key === "Enter" ){
+        e.preventDefault()
+    }
+});
+
+$('form-register').addEventListener('submit', (e) => {
+    e.preventDefault();
+    let error = false;
+    const elements = $('form-register').elements;
+
+    if(!$('terms').checked){
+        error = true;
+        $('errorTerms').innerText = "Debe aceptar las bases y condiciones"
+    }
+
+
+  /*   Array.from(elements).forEach(element => {
+
+    }) */
+
+    for (let i = 0; i < elements.length - 2; i++) {
+        
+        if(!elements[i].value || elements[i].classList.contains('is-invalid')){
+            error = true;
+            elements[i].classList.add('is-invalid')
+            $('msgError').innerText = "Algunos tienen errores y/o están vacíos."
+        }
+        
+    }
+
+    !error &&  $('form-register').submit()
 })
