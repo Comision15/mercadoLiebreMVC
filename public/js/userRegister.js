@@ -25,6 +25,10 @@ const viewPass = function(e) {
     document.querySelector('#viewPass i').classList.toggle('fa-eye-slash')
 
    $('pass').type = $('pass').type === "text" ? 'password' : 'text';
+};
+
+const verifyEmail = (email) => {
+    //llamado a la API
 }
 
 
@@ -78,6 +82,9 @@ $('email').addEventListener('blur', function(e){
             break;
         case !exRegEmail.test(this.value):
             msgError('errorEmail',"El email tiene un formato inválido", e);
+            break
+        case verifyEmail(this.value):
+            msgError('errorEmail',"El email ya se encuentra registrado", e);
             break
         default:
             validField('errorEmail',e)
