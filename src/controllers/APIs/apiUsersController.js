@@ -22,9 +22,8 @@ module.exports = {
         
     },
     verifyEmail : async (req,res) => {
-        console.log(req.body)
         try {
-            const {email} = req.query;
+            const {email} = req.body;
             let user = await db.User.findOne({
                 where : {
                     email
@@ -33,7 +32,7 @@ module.exports = {
     
             return res.status(200).json({
                 ok :  true,
-                data : user && true
+                data : user ? true : false
             })
         } catch (error) {
             console.log(error)

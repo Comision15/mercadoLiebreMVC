@@ -30,16 +30,21 @@ const viewPass = function(e) {
 const verifyEmail = async (email) => {
     //llamado a la API
     try {
+        const data = JSON.stringify({
+            email : email
+        });
+
         let response = await fetch('/api/users/verify-email',{
             method : 'POST',
-            body : JSON.stringify({
-                email : email
-            })
-        });
+            body : data,
+            headers : {
+                'Content-Type': 'application/json' 
+            }
+    });
 
         let result = await response.json();
 
-        console.log(result)
+        console.log(result.data)
 
         return result.data
         
@@ -92,7 +97,7 @@ $('surname').addEventListener('focus', function({target}){
     cleanField('errorApellido', target)
 });
 
-$('email').addEventListener('blur', function(e){
+$('email').addEventListener('blur', async function(e){
     switch (true) {
         case !this.value.trim():
             msgError('errorEmail',"El email es obligatorio", e);
@@ -100,7 +105,7 @@ $('email').addEventListener('blur', function(e){
         case !exRegEmail.test(this.value):
             msgError('errorEmail',"El email tiene un formato inválido", e);
             break
-        case verifyEmail(this.value):
+        case await verifyEmail(this.value):
             msgError('errorEmail',"El email ya se encuentra registrado", e);
             break
         default:
