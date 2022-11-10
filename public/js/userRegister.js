@@ -27,8 +27,25 @@ const viewPass = function(e) {
    $('pass').type = $('pass').type === "text" ? 'password' : 'text';
 };
 
-const verifyEmail = (email) => {
+const verifyEmail = async (email) => {
     //llamado a la API
+    try {
+        let response = await fetch('/api/users/verify-email',{
+            method : 'POST',
+            body : JSON.stringify({
+                email : email
+            })
+        });
+
+        let result = await response.json();
+
+        console.log(result)
+
+        return result.data
+        
+    } catch (error) {
+        console.error
+    }
 }
 
 

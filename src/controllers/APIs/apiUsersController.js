@@ -22,9 +22,9 @@ module.exports = {
         
     },
     verifyEmail : async (req,res) => {
-
+        console.log(req.body)
         try {
-            const {email} = req.body;
+            const {email} = req.query;
             let user = await db.User.findOne({
                 where : {
                     email
