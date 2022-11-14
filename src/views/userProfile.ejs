@@ -54,14 +54,14 @@
                   <div class="form-group col-12 col-md-6">
                     <label class="form-label" for="city">Ciudad</label>
                     <input type="text" name="city" class="form-input" id="city"
-                      value="<%= user.address.city %>">
-                    <select class="form-input" id="ciudadSelect" style="display: none;"></select>
+                      value="<%= user.address.city %>" hidden>
+                    <select class="form-input" id="ciudadSelect"></select>
                   </div>
                   <div class="form-group col-12 col-md-6">
                     <label class="form-label" for="state">Provincia</label>
                     <input type="text" name="state" class="form-input" id="state"
-                      value="<%= user.address.state %>">
-                    <select class="form-input" id="provinciaSelect" style="display: none;">
+                      value="<%= user.address.state %>" hidden>
+                    <select class="form-input" id="provinciaSelect">
                     </select>
                   </div>
                 </div>
