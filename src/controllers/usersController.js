@@ -70,7 +70,7 @@ module.exports = {
         return res.redirect("/");
       });
     } else {
-      return res.render("login", {
+      return res.render("userLogin", {
         errors: errors.mapped(),
       });
     }
@@ -79,14 +79,58 @@ module.exports = {
     db.User.findByPk(req.session.userLogin.id, {
       include: ["address"],
     })
-      .then((user) =>
-        res.render("userProfile", {
+      .then((user) => {
+      
+        return res.render("userProfile", {
           user,
         })
-      )
+  })
       .catch((error) => console.log(error));
   },
-  updateProfile: (req, res) => {},
-  logout: (req, res) => {},
+  updateProfile: (req, res) => {
+   
+    /* validaciones!!! */
+
+    const {name, surname, street, city, province } = req.body;
+    db.User.update(
+      {
+        name : name.trim(),
+        surname : surname.trim(),
+        avatar : req.file ? req.file.filename : req.session.userLogin.avatar
+      },
+      {
+        where : {
+          id : req.session.userLogin.id
+        }
+      }
+    ).then( () => {
+        db.Address.update(
+          {
+            street : street.trim(),
+            city : city,
+            province : province,
+          },
+          {
+            where : {
+              userId : req.session.userLogin.id
+            }
+          }
+        ).then( () => {
+          req.session.userLogin = {
+           ...req.session.userLogin,
+            name : name.trim(),
+            avatar : req.file ? req.file.filename : req.session.userLogin.avatar,
+          };
+          return res.redirect('/');
+        })
+    }).catch(error => console.log(error))
+  },
+  logout: (req, res) => {
+    req.session.destroy();
+    res.cookie("MercadoLiebre16ForEver", null, {
+      maxAge: -1,
+    });
+    return res.redirect('/')
+  },
   remove: (req, res) => {},
 };

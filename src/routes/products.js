@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // ************ Middlewares Require ************
-const {uploadImageProduct} = require('../middlewares/uploadFiles');
+const {upload} = require('../middlewares/uploadFiles');
 
 
 // ************ Controller Require ************
@@ -16,7 +16,7 @@ router.get('/', productsController.index);
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create', productsController.create); 
-router.post('/store',uploadImageProduct.fields([{name : 'image1'},{name : 'image2'}]), productsController.store); 
+router.post('/store',upload.fields([{name : 'image1'},{name : 'image2'}]), productsController.store); 
 
 
 /*** GET ONE PRODUCT ***/ 
