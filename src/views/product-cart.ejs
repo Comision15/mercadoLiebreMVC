@@ -1,0 +1,29 @@
+<table class="table" id="cart-box">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody id="cart-items">
+        <tr>
+            <td><img style="width: 100px" src="/images/products/<%= product.image %>" alt=""></td>
+            <td><%= product.name %></td>
+            <td>
+                <div class="d-flex">
+                    <button class="btn btn-sm btn-danger" onclick="removeItem('<%= product.id %>')"><i class="fas fa-minus"></i></button>
+                    <input type="text" style="border: none; width:20px; text-align: center;" value="${quantity}">
+                    <button class="btn btn-sm btn-success" onclick="addItem('<%= product.id %>')"><i class="fas fa-plus"></i></button>
+                </div>
+            </td>
+            <td><%= product.price - (product.price * discount) / 100 %></td>
+            <td><%= product.price - (product.price * discount) / 100 * quantity %>}</td>
+            <td>
+            <button class="btn btn-sm btn-danger" onclick="removeItemFull('<%= product.id %>')"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+    </tbody>
+  </table>

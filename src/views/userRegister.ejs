@@ -19,7 +19,7 @@
                       <div class="col-12 col-md-6">
                         <label for="name" class="form-label">Nombre</label>
                         <input type="text"
-                        class="form-input form-control <%= locals.errors && errors.name ? 'is-invalid' : null %> " 
+                        class=" form-control py-3 <%= locals.errors && errors.name ? 'is-invalid' : null %> " 
                         value="<%= locals.old && old.name ? old.name : null %>"
                         id="name"  name="name" title="El nombre debe tener más de dos caracteres"/>
                         <small id="errorNombre" class="text-danger"><%= locals.errors && errors.name ? errors.name.msg : null %> </small>
@@ -28,7 +28,7 @@
                         <label for="surname" class="form-label">Apellido</label>
                         <input type="text"
                         value="<%= locals.old && old.surname ? old.surname : null %>"
-                        class="form-input form-control <%= locals.errors && errors.surname ? 'is-invalid' : null %>"
+                        class=" form-control py-3 <%= locals.errors && errors.surname ? 'is-invalid' : null %>"
                         id="surname" name="surname" title="El apellido debe tener más de dos caracteres"/>
                         <small id="errorApellido" class="text-danger"><%= locals.errors && errors.surname ? errors.surname.msg : null %></small>
                       </div>
@@ -36,19 +36,17 @@
                         <label for="email" class="form-label">Email</label>
                         <input type="email"
                         value="<%= locals.old && old.email ? old.email : null %>"
-                        class="form-input form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>"
+                        class=" form-control py-3 <%= locals.errors && errors.email ? 'is-invalid' : null %>"
                         id="email" name="email"/>
                         <small id="errorEmail" class="text-danger"><%= locals.errors && errors.email ? errors.email.msg : null %></small>
                       </div>
                     <div class="col-12 col-md-6">
                         <label for="pass" class="form-label">Contraseña</label>
-                        <div class="input-group mb-3">
+                        <div class="d-flex  mb-3">
                           
                           <input type="password"
-                          class="form-input form-control <%= locals.errors && errors.pass ? 'is-invalid' : null %>" name="pass" id="pass"/>
-                          <div class="input-group-append" style="cursor: pointer;" onclick="viewPass(event)">
-                            <span class="input-group-text py-4" id="viewPass"><i class="fa-solid fa-eye-slash" ></i></span>
-                          </div>
+                          class=" py-3 form-control <%= locals.errors && errors.pass ? 'is-invalid' : null %>" name="pass" id="pass"/>
+                            <span class="input-group-text" style="cursor: pointer;"><i class="fa-solid fa-eye-slash " ></i></span>
                         </div>
 
                      
@@ -58,7 +56,7 @@
                       <div class="col-12 col-md-6">
                         <label for="pass2" class="form-label">Reingresar contraseña</label>
                         <input type="password"
-                        class="form-input form-control <%= locals.errors && errors.pass2 ? 'is-invalid' : null %>"
+                        class=" form-control py-3 <%= locals.errors && errors.pass2 ? 'is-invalid' : null %>"
                         id="pass2" name="pass2"/>
                         <small id="errorPass2" class= "text-danger"><%= locals.errors && errors.pass2 ? errors.pass2.msg : null %></small>
 

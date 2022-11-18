@@ -8,20 +8,24 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      orderId: {
+      quantity : {
         type: Sequelize.INTEGER,
-        references : {
-          model : {
-            tableName : 'Orders'
-          },
-          key : 'id'
-        }
       },
       productId: {
         type: Sequelize.INTEGER,
         references : {
           model : {
             tableName : 'Products'
+          },
+          key : 'id'
+        },
+        onDelete : 'cascade'
+      },
+      orderId: {
+        type: Sequelize.INTEGER,
+        references : {
+          model : {
+            tableName : 'Orders'
           },
           key : 'id'
         },

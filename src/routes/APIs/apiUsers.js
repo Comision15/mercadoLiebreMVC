@@ -10,6 +10,5 @@ const {getAll,getById, verifyEmail} = require('../../controllers/APIs/apiUsersCo
 router
     .get('/', getAll)
     .get('/:id', getById)
-    .post('/verify-email',verifyEmail)
 
 module.exports = router;

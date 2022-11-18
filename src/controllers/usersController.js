@@ -54,6 +54,7 @@ module.exports = {
           email,
         },
       }).then(({ id, name, rolId, avatar }) => {
+
         req.session.userLogin = {
           id,
           name,
@@ -62,12 +63,11 @@ module.exports = {
         };
 
         if (remember) {
-          res.cookie("MercadoLiebre16ForEver", req.session.userLogin, {
+          res.cookie("MercadoLiebre15ForEver", req.session.userLogin, {
             maxAge: 1000 * 60 * 2,
           });
-        }
-
-        return res.redirect("/");
+        };
+        return res.redirect('/');
       });
     } else {
       return res.render("userLogin", {

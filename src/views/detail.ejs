@@ -57,12 +57,12 @@
 							</li>
 						</ul>
 
-						<a href="#" class="buy-now-button">COMPRAR AHORA</a>
+						<button class="btn btn-primary" onclick="addCartItem('<%=product.id%>')">AGREGAR AL CARRITO</button>
 						<hr>
 
-						<a href="/products/edit/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a>
+						<a href="/products/edit/<%= product.id %>" class="btn btn-success">EDITAR PRODUCTO</a>
 						<form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
-							<button type="submit" style="cursor: pointer;" class="action-button delete">ELIMINAR</button>
+							<button type="submit" style="cursor: pointer;" class="btn btn-danger">ELIMINAR</button>
 						</form>
 					</article>
 				</div>
@@ -74,6 +74,7 @@
 	<!-- footer -->
 	<%- include('partials/footer') %>
 	<!-- /footer -->
+	<%- include('partials/scripts') %>
 
 </body>	
 </html>
