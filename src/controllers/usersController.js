@@ -80,7 +80,6 @@ module.exports = {
       include: ["address"],
     })
       .then((user) => {
-      
         return res.render("userProfile", {
           user,
         })

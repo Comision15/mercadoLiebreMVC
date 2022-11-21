@@ -19,7 +19,7 @@
             enctype="multipart/form-data">
             <div class="row product-detail">
               <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-between">
-                <img src="/images/users/<%= user.image ? user.image : 'default.png' %>" id="imagePreview" class="avatarImg" alt="imagen de perfil"
+                <img src="/images/users/<%= user.avatar ? user.avatar : 'default.png' %>" id="imagePreview" class="avatarImg" alt="imagen de perfil"
                   width="75%" style="object-fit: cover; object-position: top;">
                 <div class="form-group">
                   <label for="avatar" class="btn btn-primary fs-4 p-3">Cambiar avatar</label>
@@ -80,8 +80,7 @@
   </div>
 
   <%- include('partials/footer') %>
-  <script src="/js/userProfile.js"></script>
-
+<script src="/js/userProfile.js"></script>
 </body>
 
 </html>

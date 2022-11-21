@@ -46,7 +46,7 @@
                           
                           <input type="password"
                           class=" py-3 form-control <%= locals.errors && errors.pass ? 'is-invalid' : null %>" name="pass" id="pass"/>
-                            <span class="input-group-text" style="cursor: pointer;"><i class="fa-solid fa-eye-slash " ></i></span>
+                            <span class="input-group-text" style="cursor: pointer;" id="btn-show-pass"><i class="fa-solid fa-eye-slash" ></i></span>
                         </div>
 
                      
@@ -104,8 +104,6 @@
     </div>
 
     <%- include('partials/footer') %>
-    <%- include('partials/scripts') %>
-
     <script src="/js/userRegister.js"></script>
   </body>
 </html>
