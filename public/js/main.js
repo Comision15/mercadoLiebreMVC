@@ -1,6 +1,6 @@
 const $ = (element) => document.getElementById(element);
 
-$('btn-logout').addEventListener('click', (e) => {
+$('btn-logout') && $('btn-logout').addEventListener('click', (e) => {
     e.preventDefault();
     
 

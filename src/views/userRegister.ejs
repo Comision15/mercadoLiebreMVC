@@ -22,7 +22,8 @@
                         class=" form-control py-3 <%= locals.errors && errors.name ? 'is-invalid' : null %> " 
                         value="<%= locals.old && old.name ? old.name : null %>"
                         id="name"  name="name" title="El nombre debe tener más de dos caracteres"/>
-                        <small id="errorNombre" class="text-danger"><%= locals.errors && errors.name ? errors.name.msg : null %> </small>
+                        <small class="text-danger"><%= locals.errors && errors.name ? errors.name.msg : null %> </small>
+                        <small id="errorNombre" class="text-danger"></small>
                       </div>
                       <div class="col-12 col-md-6">
                         <label for="surname" class="form-label">Apellido</label>
@@ -30,7 +31,8 @@
                         value="<%= locals.old && old.surname ? old.surname : null %>"
                         class=" form-control py-3 <%= locals.errors && errors.surname ? 'is-invalid' : null %>"
                         id="surname" name="surname" title="El apellido debe tener más de dos caracteres"/>
-                        <small id="errorApellido" class="text-danger"><%= locals.errors && errors.surname ? errors.surname.msg : null %></small>
+                        <small class="text-danger"><%= locals.errors && errors.surname ? errors.surname.msg : null %></small>
+                        <small id="errorApellido" class="text-danger"></small>
                       </div>
                       <div class="col-12">
                         <label for="email" class="form-label">Email</label>
@@ -38,7 +40,8 @@
                         value="<%= locals.old && old.email ? old.email : null %>"
                         class=" form-control py-3 <%= locals.errors && errors.email ? 'is-invalid' : null %>"
                         id="email" name="email"/>
-                        <small id="errorEmail" class="text-danger"><%= locals.errors && errors.email ? errors.email.msg : null %></small>
+                        <small class="text-danger"><%= locals.errors && errors.email ? errors.email.msg : null %></small>
+                        <small id="errorEmail" class="text-danger"></small>
                       </div>
                     <div class="col-12 col-md-6">
                         <label for="pass" class="form-label">Contraseña</label>
@@ -50,7 +53,16 @@
                         </div>
 
                      
-                        <small id="errorPass" class="text-danger"><%= locals.errors && errors.pass ? errors.pass.msg : null %></small>
+                        <small class="text-danger"><%= locals.errors && errors.pass ? errors.pass.msg : null %></small>
+                        <small id="errorPass" class="text-danger"></small>
+                        <ul id="msgPass" hidden>
+                          <li id="mayu">Una mayúscula</li>
+                          <li id="minu">Un minúscula</li>
+                          <li id="num">Un número</li>
+                          <li id="esp">Un caracter especial ($@$!%*?&)</li>
+                          <li id="min">Mínimo 6 caracteres</li>
+                          <li id="max">Máximo 8 caracteres</li>
+                        </ul>
                       </div>
 
                       <div class="col-12 col-md-6">
