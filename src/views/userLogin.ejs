@@ -24,10 +24,10 @@
 
                                         <div class="col-12 col-md-6">
                                             <label for="email" class="form-label">Email</label>
-                                            <div class="has-validation">
+                                            <div class="has-validation" >
                                                 <input type="email"
                                                 class="form-input form-control"
-                                                id="email" name="email" required>
+                                                id="email" name="email" required >
                                             <small class="text-danger" id="error-email">
                                                 <%= locals.errors && errors.email ? errors.email.msg : null %>
                                             </small>
@@ -78,6 +78,7 @@
             </div>
 
             <%- include('partials/footer') %>
+            <script src="/js/validationsForm.js"></script>
     </body>
 
 </html>

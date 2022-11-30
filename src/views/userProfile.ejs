@@ -1,86 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('./partials/head',{
-  title : 'Perfil'
-}) %>
+<%- include('./partials/head',{ title : 'Perfil' }) %>
 
-<body>
-  <%- include('./partials/headerNavbar') %>
+  <body>
+    <%- include('./partials/headerNavbar') %>
 
-    <div class="container products-wrapper">
-      <div class="row">
-        <div class="col-12">
-          <h2 class="products-title">Perfil de Usuario</h2>
-        </div>
-        <div class="col-12">
-         <div class="card">
-          <div class="card-body">
-            <form action="/users/update?_method=PUT" method="POST"
-            enctype="multipart/form-data">
-            <div class="row product-detail">
-              <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-between">
-                <img src="/images/users/<%= user.avatar ? user.avatar : 'default.png' %>" id="imagePreview" class="avatarImg" alt="imagen de perfil"
-                  width="75%" style="object-fit: cover; object-position: top;">
-                <div class="form-group">
-                  <label for="avatar" class="btn btn-primary fs-4 p-3">Cambiar avatar</label>
-                  <input hidden type="file" class="form-input" id="avatar" name="avatar">
-                </div>
-              </div>
-              <div class="col-12 col-md-8 ">
-                <div class="row mt-2">
-                  <div class="form-group col-12 col-md-6 ">
-                    <label class="form-label" for="name">Nombre</label>
-                    <input type="text" name="name" class="form-input" id="name"
-                      value="<%= user.name %>" >
+      <div class="container products-wrapper">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="products-title">Perfil de Usuario</h2>
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <form action="/users/update?_method=PUT" method="POST" enctype="multipart/form-data">
+                  <div class="row product-detail">
+                    <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-between">
+                      <img src="/images/users/<%= user.avatar ? user.avatar : 'default.png' %>" id="imagePreview"
+                        class="avatarImg" alt="imagen de perfil" width="75%"
+                        style="object-fit: cover; object-position: top;">
+                      <p class="text-danger" id="msgErrorAvatar"></p>
+                      <div class="form-group">
+                        <label for="avatar" class="btn btn-primary fs-4 p-3">Cambiar avatar</label>
+                        <input hidden type="file" class="form-input" id="avatar" name="avatar" accept="image/*">
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-8 ">
+                      <div class="row mt-2">
+                        <div class="form-group col-12 col-md-6 ">
+                          <label class="form-label" for="name">Nombre</label>
+                          <input type="text" name="name" class="form-input" id="name" value="<%= user.name %>">
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                          <label class="form-label" for="surname">Apellido</label>
+                          <input type="text" name="surname" class="form-input" id="surname" value="<%= user.surname %>">
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                          <label class="form-label" for="password">Nueva contraseña</label>
+                          <input type="password" name="password" class="form-input" id="password" autocomplete="off">
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                          <label class="form-label" for="password2">Confirmar contraseña</label>
+                          <input type="password" name="password2" class="form-input" id="password2" autocomplete="off">
+                        </div>
+                        <div class="form-group col-12 ">
+                          <label class="form-label" for="street">Dirección</label>
+                          <input type="text" name="street" class="form-input" id="street"
+                            value="<%= user.address.street %>">
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                          <label class="form-label" for="city-select">Ciudad</label>
+                          <select class="form-input" id="city-select" name="city">
+                            <option value="<%= user.address.city %>"><%= user.address.city %></option>
+                          </select>
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                          <label class="form-label" for="province-select">Provincia</label>
+                          <input type="text" class="form-input" id="province-input" value="<%= user.address.province %>"
+                            hidden>
+                          <select class="form-input" id="province-select" name="province">
+
+                          </select>
+                        </div>
+                      </div>
+                      <div class="d-md-flex justify-content-end mt-5 gap-3">
+                        <button type="button" class="btn btn-secondary fs-4 p-3"><a href="/" class="text-light">Salir
+                            sin
+                            guardar</a></button>
+                        <button type="submit" class="btn btn-primary fs-4 p-3">Actualizar datos</button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-group col-12 col-md-6">
-                    <label class="form-label"  for="surname">Apellido</label>
-                    <input type="text" name="surname" class="form-input" id="surname"
-                      value="<%= user.surname %>" >
-                  </div>
-                  <div class="form-group col-12 col-md-6">
-                    <label class="form-label" for="password">Nueva contraseña</label>
-                    <input type="password" name="password" class="form-input" id="password" autocomplete="off">
-                  </div>
-                  <div class="form-group col-12 col-md-6">
-                    <label class="form-label" for="password2">Confirmar contraseña</label>
-                    <input type="password" name="password2" class="form-input" id="password2" autocomplete="off">
-                  </div>
-                  <div class="form-group col-12 ">
-                    <label class="form-label" for="street">Dirección</label>
-                    <input type="text" name="street" class="form-input" id="street"
-                      value="<%= user.address.street %>">
-                  </div>
-                  <div class="form-group col-12 col-md-6">
-                    <label class="form-label" for="city-select">Ciudad</label>
-                    <input type="text" class="form-input" id="city-input"
-                      value="<%= user.address.city %>" hidden>
-                    <select class="form-input" id="city-select" name="city"></select>
-                  </div>
-                  <div class="form-group col-12 col-md-6">
-                    <label class="form-label" for="province-select">Provincia</label>
-                    <input type="text"class="form-input" id="province-input" value="<%= user.address.province %>" hidden>
-                    <select class="form-input" id="province-select"  name="province" >
-                      
-                    </select>
-                  </div>
-                </div>
-                <div class="d-md-flex justify-content-end mt-5 gap-3">
-                  <button type="button" class="btn btn-secondary fs-4 p-3"><a href="/" class="text-light">Salir sin
-                      guardar</a></button>
-                  <button type="submit" class="btn btn-primary fs-4 p-3">Actualizar datos</button>
-                </div>
+                </form>
               </div>
             </div>
-          </form>
           </div>
-         </div>
         </div>
       </div>
-  </div>
 
-  <%- include('partials/footer') %>
-<script src="/js/userProfile.js"></script>
-</body>
+      <%- include('partials/footer') %>
+        <!-- <script src="/js/userProfile.js"></script> -->
+
+        <script>
+          console.log("userProfile.js connected!");
+          const allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+          const apiUrlBase = "https://apis.datos.gob.ar/georef/api"
+
+          $('avatar').addEventListener('change', function ({ target }) {
+
+            if (!allowedExtensions.exec(target.value)) {
+              $("msgErrorAvatar").innerText = "Solo archivos de imagen!"
+              target.value = null;
+
+            } else {
+              let reader = new FileReader();
+
+              reader.readAsDataURL(target.files[0]);
+
+              reader.onload = () => {
+                $('imagePreview').src = reader.result
+              }
+            }
+
+          });
+
+
+          const getProvinces = async () => {
+            try {
+
+              const response = await fetch(`${apiUrlBase}/provincias`);
+              const result = await response.json();
+
+              result.provincias.sort((a, b) => a.nombre > b.nombre ? 1 : a.nombre < b.nombre ? -1 : 0)
+
+              return result.provincias
+
+            } catch (error) {
+              console.error
+            }
+
+          };
+
+          const getCities = async (provincia) => {
+            try {
+
+              const response = await fetch(`${apiUrlBase}/localidades?provincia=${provincia}&max=4000`);
+              const result = await response.json();
+
+              result.localidades.sort((a, b) => a.nombre > b.nombre ? 1 : a.nombre < b.nombre ? -1 : 0)
+
+              return result.localidades
+
+            } catch (error) {
+              console.error
+            }
+          }
+
+
+
+          window.addEventListener('load', async () => {
+
+
+            let provincias = await getProvinces();
+            provincias.forEach(provincia => {
+              $('province-select').innerHTML += `<option value="${provincia.nombre}"  ${provincia.nombre === $('province-input').value && 'selected'}>${provincia.nombre}</option>`
+            });
+
+            $('province-select').addEventListener('change', async ({target}) => {
+              $('city-select').innerHTML = `<option selected hidden>Cargando...</option>`;
+
+              let localidades = await getCities(target.value);
+              $('city-select').innerHTML = `<option selected hidden>Seleccione...</option>`;
+              localidades.forEach(localidad => {
+              $('city-select').innerHTML += `<option value="${localidad.nombre}">${localidad.nombre}</option>`
+            });
+            })
+
+
+          })
+        </script>
+  </body>
 
 </html>

@@ -164,17 +164,39 @@ $("pass2").addEventListener("blur", function ({ target }) {
     }
   });
 
+  $('terms').addEventListener("click", function({target}) {
+
+    validField('errorTerms', target)
+
+  })
+
 $("form-register").addEventListener("submit", function (e) {
+
   e.preventDefault();
+  let error = false;
+
+  if(!$('terms').checked){
+    error = true;
+    $('errorTerms').innerText = "Debes aceptar las bases y condiciones";
+    $('terms').classList.add('is-invalid')
+  }
+
+
 
   const elements = this.elements;
-    for (let i = 0; i < elements.length - 1; i++) {
+    for (let i = 0; i < elements.length - 2; i++) {
         
         if(!elements[i].value.trim() || elements[i].classList.contains('is-invalid')){
             elements[i].classList.add('is-invalid')
-           $('msgError').innerText = 'Llená bien formulario men!'
+           $('msgError').innerText = 'Hay campos con errores o están vacíos';
+           error = true;
         }
     }
+
+
+  
+  
+  !error && this.submit()
 
   /*  Swal.fire({
         position: "center",
