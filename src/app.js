@@ -50,6 +50,8 @@ app.use('/products', productsRouter);
 app.use('/api', require('./routes/APIs/apiMain'));
 app.use('/api/users',require('./routes/APIs/apiUsers'));
 app.use('/api/products',require('./routes/APIs/apiProducts'));
+app.use('/api/categories',require('./routes/APIs/apiCategories'));
+
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************

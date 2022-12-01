@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
-    "dev": "nodemon ./src/bin/www",
+    "server": "nodemon ./src/bin/www",
+    "client:start": "cd admin & npm run start",
+    "client:build": "cd admin & npm run build",
+    "dev": "concurrently \"npm run server\" \"npm run client:start\"",
     "db:create": "sequelize db:drop & sequelize db:create & sequelize db:migrate & sequelize db:seed:all",
     "db:reset": "sequelize db:migrate:undo:all & sequelize db:migrate &sequelize db:seed:all"
   },
@@ -25,5 +28,8 @@
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.1",
     "sequelize": "^6.22.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }
