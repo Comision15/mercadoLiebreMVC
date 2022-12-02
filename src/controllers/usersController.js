@@ -67,7 +67,7 @@ module.exports = {
             maxAge: 1000 * 60 * 2,
           });
         };
-        return res.redirect('/');
+        return rolId === 1  ? res.redirect('http://localhost:3000') : res.redirect('/');
       });
     } else {
       return res.render("userLogin", {

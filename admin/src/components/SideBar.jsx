@@ -1,23 +1,24 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 export const SideBar = () => {
   return (
     <ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <a className="sidebar-brand " href="/">
+    <Link className="sidebar-brand " to="/">
         <div className="sidebar-brand-icon">
             <img className="w-100" src="/images/logo-mercado-liebre.svg" alt="Mercado Liebre"/>
         </div>
-    </a>
+    </Link>
 
     
     <hr className="sidebar-divider my-0"/>
 
     
     <li className="nav-item active">
-        <a className="nav-link" href="/">
+        <Link className="nav-link" to="/">
             <i className="fas fa-fw fa-tachometer-alt"></i>
-            <span>DASHBOARD</span></a>
+            <span>DASHBOARD</span></Link>
     </li>
 
     
@@ -28,24 +29,24 @@ export const SideBar = () => {
 
     
     <li className="nav-item">
-        <a className="nav-link collapsed" href="/">
+        <Link className="nav-link collapsed" to="/products">
             <i className="fas fa-fw fa-folder"></i>
             <span>Productos</span>
-        </a>
+        </Link>
     </li>
 
     
     <li className="nav-item">
-        <a className="nav-link" href="/">
+        <Link className="nav-link" to="/users">
             <i className="fas fa-fw fa-chart-area"></i>
-            <span>Usuarios</span></a>
+            <span>Usuarios</span></Link>
     </li>
 
     
     <li className="nav-item">
-        <a className="nav-link" href="/">
+        <Link className="nav-link" to="/categories">
             <i className="fas fa-fw fa-table"></i>
-            <span>Categorias</span></a>
+            <span>Categorias</span></Link>
     </li>
 
     
