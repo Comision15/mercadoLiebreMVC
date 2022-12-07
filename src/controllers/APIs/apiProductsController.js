@@ -43,7 +43,7 @@ module.exports = {
 				],
 				attributes : {
 					exclude : ['updatedAt','deletedAt'],
-					include : [[literal(`CONCAT('${req.protocol}://${req.get('host')}/products/',Product.id)`),'url']]
+					include : [[literal(`CONCAT('${req.protocol}://${req.get('host')}/api/products/',Product.id)`),'url']]
 				},
 				where : {
 					[Op.or] : [
